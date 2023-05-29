@@ -1,5 +1,6 @@
 *** Settings ***
-Resource    ${EXECDIR}/resources/base.robot
+Resource    ../resources/base.robot
+#...    ${EXECDIR}/resources/base.robot
 Resource    ../resources/pages/signup.robot
 #...    ../resources/base.robot
 
@@ -12,7 +13,6 @@ Deve cadastrar um novo usuário
         ...    password=123456
         
         Remove User By Email    ${user}[email]
-
         Start Session
         Go to signup
         Register user           ${user}
@@ -72,7 +72,7 @@ Senha deve ser obrigatória
          Alert should be          Informe uma senha com pelo menos 6 digitos
 
 Senha com menos de 6 dígitos
-    [Tags]    semMenorQue6
+    [Tags]    semMenos
 
          &{user}=        Create Dictionary    
          ...    name=Missako Moriya
