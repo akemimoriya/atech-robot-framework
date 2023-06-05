@@ -18,16 +18,11 @@ Register user
         Fill Text        css=input[name=password]    ${user}[password]
         Click            css=button[type=submit] >> text=Cadastrar
 
-Notice should be
-    [Arguments]    ${message}
-        ${notice}         Set Variable    css=.notice p
-
-        Wait For Elements State           ${notice}        visible    5    
-        Get Text        ${notice}         equal          ${message}
-
 Alert should be
     [Arguments]    ${alert}
         ${alertError}    Set Variable    css=.alert-error
-        Get Text        ${alertError}         equal          ${alert}
+
+        Wait For Elements State            ${alertError}    visible    5
+        Get Text                           ${alertError}         equal          ${alert}
         
 

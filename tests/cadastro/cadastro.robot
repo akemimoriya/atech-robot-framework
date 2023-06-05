@@ -1,8 +1,6 @@
 *** Settings ***
-Resource    ../resources/base.robot
-#...    ${EXECDIR}/resources/base.robot
-Resource    ../resources/pages/signup.robot
-#...    ../resources/base.robot
+Resource    ${EXECDIR}/resources/base.robot
+#Resource    ${EXECDIR}/resources/pages/signup.robot
 
 *** Test Cases ***
 Deve cadastrar um novo usuário
@@ -27,17 +25,18 @@ Usuário duplicado
          ...    email=luciano.oikawa@gmail.com    
          ...    password=123456
          
-         Remove User By Email    ${user}[email]
+         Create new user             ${user}
          Start Session
          Go to signup
          Register user           ${user}
-         Register user           ${user}
+         #Register user           ${user}
          Notice should be        Oops! Já existe um cadastro com e-mail informado.
+
 Nome deve ser obrigatório
     [Tags]    semNome
 
          &{user}=        Create Dictionary    
-         ...    name=
+         ...    name=${EMPTY}
          ...    email=missako.moriya@gmail.com    
          ...    password=123456
          
@@ -47,24 +46,25 @@ Nome deve ser obrigatório
          Alert should be          Informe seu nome completo
 
 Email deve ser obritatório
-    [Tags]    semEmail
+    [Tags]    camposObrigatorios
 
          &{user}=        Create Dictionary    
          ...    name=Missako Moriya
-         ...    email=
+         ...    email=${EMPTY}
          ...    password=123456
          
          Start Session
          Go to signup
          Register user            ${user}
          Alert should be          Informe seu e-email
+
 Senha deve ser obrigatória
-    [Tags]    semSenha
+    [Tags]    camposObrigatorios
 
          &{user}=        Create Dictionary    
          ...    name=Missako Moriya
-         ...    email=issako.moriya@gmail.com    
-         ...    password=
+         ...    email=missako.moriya@gmail.com    
+         ...    password=${EMPTY}
          
          Start Session
          Go to signup
@@ -72,17 +72,20 @@ Senha deve ser obrigatória
          Alert should be          Informe uma senha com pelo menos 6 digitos
 
 Senha com menos de 6 dígitos
-    [Tags]    semMenos
+    [Tags]    camposObrigatorios
 
          &{user}=        Create Dictionary    
          ...    name=Missako Moriya
-         ...    email=issako.moriya@gmail.com    
+         ...    email=missako.moriya@gmail.com    
          ...    password=12345
          
          Start Session
          Go to signup
          Register user            ${user}
          Alert should be          Informe uma senha com pelo menos 6 digitos
+
+
+
 
 
 
