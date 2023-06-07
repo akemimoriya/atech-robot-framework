@@ -1,0 +1,39 @@
+{
+    "create":{
+        "user":{
+            "name":"Henrique Kazuo Oikawa",
+            "email":"henriqueoikawa@gmail.com",
+            "password":"123456"            
+    },
+        "task":{
+            "name":"Pagar a fatura do cartão de crédito",
+            "tags":["nubank", "inter", "ourocard"]
+        }
+    },
+
+    "remove":{
+        "user":{
+            "name":"Patricia Oikawa",
+            "email":"patriciaoikawa@gmail.com",
+            "password":"123456"            
+    },
+        "task":{
+            "name":"Compras fraldas",
+            "tags":["pampers"]
+        }
+    },
+
+    "finish":{
+        "user":{
+            "name":"Bruno Richter",
+            "email":"brunorichter@gmail.com",
+            "password":"123456"            
+    },
+        "task":{
+            "name":"Visitar cliente A",
+            "tags":["Curitiba"]
+        }
+    }
+
+
+}

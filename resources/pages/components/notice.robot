@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation        Componentes em comum nas páginas
+Documentation        Componente de notificação
 
 Library  Browser
 
